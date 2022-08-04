@@ -18,7 +18,7 @@ const get = async function (webpage) {
   // fetch the URL
   try {
     html = await request({ url: webpage })
-  } catch(e) {
+  } catch (e) {
     return null
   }
 
@@ -43,7 +43,7 @@ const get = async function (webpage) {
       try {
         // if it succeeds then it's an absolute URL
         // which can be used as is
-        const parsedLink = new url.URL(retval)
+        url.URL(retval)
         return retval
       } catch (e) {
         // make an absolute URL from the relative path
