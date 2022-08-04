@@ -1,6 +1,8 @@
-const axios = require('axios').default
 const url = require('url')
+const request = require('./request.js')
 
+// get a favicon from the URL of a web page
+// returns the URL of the icon or null if something went wrong
 const get = async function (webpage) {
   let retval = null
   let html
@@ -15,19 +17,21 @@ const get = async function (webpage) {
 
   // fetch the URL
   try {
-    const response = await axios.get(webpage)
-    html = response.data
+    html = await request({ url: webpage })
   } catch(e) {
     return null
   }
 
   // find the link tag
-  const regLink = /<link[^>]+rel=.(icon|shortcut icon|alternate icon|apple-touch-icon-precomposed)[^>]+>/ig
+  const regLink = /<link[^>]+rel=.(icon|shortcut icon|alternate icon|apple-touch-icon|apple-touch-icon-precomposed)[^>]+>/ig
   const matches = html.match(regLink)
   if (matches) {
+    // find the href element within the tag
     const linkTag = matches[0]
     const regHref = /href=('|")(.*?)\1/i
     const linkMatches = linkTag.match(regHref)
+
+    // if link tag found
     if (linkMatches) {
       // linkMatches contains
       // [0] - the matches string

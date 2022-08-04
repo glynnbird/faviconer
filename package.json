@@ -1,6 +1,6 @@
 {
   "name": "faviconer",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Favicon fetcher",
   "main": "index.js",
   "scripts": {
@@ -18,8 +18,5 @@
   "bugs": {
     "url": "https://github.com/glynnbird/faviconer/issues"
   },
-  "homepage": "https://github.com/glynnbird/faviconer#readme",
-  "dependencies": {
-    "axios": "^0.27.2"
-  }
+  "homepage": "https://github.com/glynnbird/faviconer#readme"
 }
