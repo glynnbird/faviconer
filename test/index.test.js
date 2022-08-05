@@ -2,6 +2,7 @@ const faviconer = require('../index.js')
 const nock = require('nock')
 const URL = 'https://fakedomain.com'
 const PATH = '/mypath'
+const PATH2 = '/mypath2'
 const fs = require('fs')
 
 afterEach(() => {
@@ -39,6 +40,21 @@ test('check icon fetch 3 - relative URL', async () => {
   const HTML = fs.readFileSync('./test/test4.html').toString()
   const scope = nock(URL)
     .get(PATH)
+    .reply(200, HTML)
+
+  const p = await faviconer.get(URL + PATH)
+  expect(typeof p).toBe('string')
+  expect(p).toBe(URL + '/favicon.ico')
+  expect(scope.isDone()).toBe(true)
+})
+
+test('check icon fetch 4 - redirect URL', async () => {
+  // mocks
+  const HTML = fs.readFileSync('./test/test4.html').toString()
+  const scope = nock(URL)
+    .get(PATH)
+    .reply(301, '', { location: URL + PATH2 })
+    .get(PATH2)
     .reply(200, HTML)
 
   const p = await faviconer.get(URL + PATH)
