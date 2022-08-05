@@ -1,6 +1,6 @@
 {
   "name": "faviconer",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Favicon fetcher",
   "main": "index.js",
   "scripts": {
@@ -30,5 +30,8 @@
     "env": [
       "jest"
     ]
+  },
+  "dependencies": {
+    "axios": "^0.27.2"
   }
 }
