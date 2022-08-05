@@ -66,7 +66,8 @@ const request = async function (opts) {
           try {
             // if it succeeds then it's an absolute URL
             // which can be used as is
-            url.URL(loc)
+            /* eslint-disable no-new */
+            new url.URL(loc)
           } catch (e) {
             // make an absolute URL from the relative path
             // and the original web page's URL
