@@ -1,10 +1,12 @@
 {
   "name": "faviconer",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "Favicon fetcher",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "standard": "standard --fix",
+    "test": "standard && npm run jest",
+    "jest": "jest test/* --env node"
   },
   "repository": {
     "type": "git",
@@ -18,5 +20,15 @@
   "bugs": {
     "url": "https://github.com/glynnbird/faviconer/issues"
   },
-  "homepage": "https://github.com/glynnbird/faviconer#readme"
+  "homepage": "https://github.com/glynnbird/faviconer#readme",
+  "devDependencies": {
+    "jest": "^28.1.3",
+    "nock": "^13.2.9",
+    "standard": "^17.0.0"
+  },
+  "standard": {
+    "env": [
+      "jest"
+    ]
+  }
 }
