@@ -1,5 +1,3 @@
-const url = require('url')
-
 // get a favicon from the URL of a web page
 // returns the URL of the icon or null if something went wrong
 const get = async function (webpage) {
@@ -9,7 +7,7 @@ const get = async function (webpage) {
 
   // parse the URL
   try {
-    parsedURL = new url.URL(webpage)
+    parsedURL = new URL(webpage)
   } catch (e) {
     return null
   }
@@ -49,7 +47,7 @@ const get = async function (webpage) {
       } catch (e) {
         // make an absolute URL from the relative path
         // and the original web page's URL
-        const absoluteURL = new url.URL(retval, parsedURL.href)
+        const absoluteURL = new URL(retval, parsedURL.href)
         return absoluteURL.href
       }
     }
