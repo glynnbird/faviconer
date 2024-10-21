@@ -1,5 +1,4 @@
 const url = require('url')
-const axios = require('axios').default
 
 // get a favicon from the URL of a web page
 // returns the URL of the icon or null if something went wrong
@@ -17,8 +16,8 @@ const get = async function (webpage) {
 
   // fetch the URL
   try {
-    const response = await axios(webpage)
-    html = response.data
+    const response = await fetch(webpage)
+    html = await response.text()
   } catch (e) {
     return null
   }
